@@ -59,9 +59,23 @@ public class ControladorTermo {
             miVista.getToggleButtonEdit().setEnabled(false);
         }
     }
-    
+    /**
+     * Cambia de modo al modo Manual
+     */
     public void modeManualSwitch(){
         
+        if(!miModelo.getManual()){
+            
+            miModelo.setManual(true);
+            miVista.getLabelHoras().setVisible(true);
+            miVista.getSpinnerSelectHora().setVisible(true);
+            miVista.getButtonIniciar().setVisible(true);
+        }else{
+            miModelo.setManual(false);
+            miVista.getLabelHoras().setVisible(false);
+            miVista.getSpinnerSelectHora().setVisible(false);
+            miVista.getButtonIniciar().setVisible(false);
+        }
     }
 }
 

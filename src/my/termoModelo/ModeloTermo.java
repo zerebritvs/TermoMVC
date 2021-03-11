@@ -22,8 +22,11 @@ public class ModeloTermo {
      */
     public ModeloTermo(){
         power = false;
+        manual = false;
+        auto = false;
+        edit = false;
  
-        
+       
     }
     
     /**
