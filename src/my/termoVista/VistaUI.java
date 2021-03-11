@@ -5,17 +5,25 @@
  */
 package my.termoVista;
 
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+import my.termoModelo.ModeloTermo;
+
 /**
  *
  * @author juan
  */
 public class VistaUI extends javax.swing.JFrame {
-
+    private ControladorTermo miControl;
+    private ModeloTermo miModelo;
     /**
      * Creates new form VistaUI
      */
     public VistaUI() {
         initComponents();
+        miModelo = new ModeloTermo();
+        miControl = new ControladorTermo(this, miModelo);
+        
     }
 
     /**
@@ -28,331 +36,402 @@ public class VistaUI extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jPanelDias = new javax.swing.JPanel();
+        jLabelLunes = new javax.swing.JLabel();
+        jLabelMartes = new javax.swing.JLabel();
+        jLabelMiercoles = new javax.swing.JLabel();
+        jLabelJueves = new javax.swing.JLabel();
+        jLabelViernes = new javax.swing.JLabel();
+        jLabelSabado = new javax.swing.JLabel();
+        jLabelDomingo = new javax.swing.JLabel();
+        jPanelMedio = new javax.swing.JPanel();
+        jPanelPantalla = new javax.swing.JPanel();
+        jTextFieldHora = new javax.swing.JTextField();
+        jTextFieldTemp = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jPanel7 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton5 = new javax.swing.JToggleButton();
-        jToggleButton6 = new javax.swing.JToggleButton();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jToggleButton7 = new javax.swing.JToggleButton();
-        jToggleButton8 = new javax.swing.JToggleButton();
-        jToggleButton9 = new javax.swing.JToggleButton();
-        jToggleButton10 = new javax.swing.JToggleButton();
+        jPanelSelectProgram = new javax.swing.JPanel();
+        jLabelActualProgram = new javax.swing.JLabel();
+        jComboBoxPrograms = new javax.swing.JComboBox<>();
+        jPanelSelectHoras = new javax.swing.JPanel();
+        jToggleButtonHora03 = new javax.swing.JToggleButton();
+        jToggleButtonHora47 = new javax.swing.JToggleButton();
+        jToggleButtonHora811 = new javax.swing.JToggleButton();
+        jToggleButtonHora1215 = new javax.swing.JToggleButton();
+        jToggleButtonHora1619 = new javax.swing.JToggleButton();
+        jToggleButtonHora2023 = new javax.swing.JToggleButton();
+        jPanelSelectInit = new javax.swing.JPanel();
+        jLabelHoras = new javax.swing.JLabel();
+        jSpinnerSelectHora = new javax.swing.JSpinner();
+        jButtonIniciar = new javax.swing.JButton();
+        jPanelOpciones = new javax.swing.JPanel();
+        jToggleButtonOn = new javax.swing.JToggleButton();
+        jToggleButtonManual = new javax.swing.JToggleButton();
+        jToggleButtonAuto = new javax.swing.JToggleButton();
+        jToggleButtonEdit = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
-        jLabel1.setText("Lunes");
-        jPanel1.add(jLabel1);
+        jLabelLunes.setText("Lunes");
+        jPanelDias.add(jLabelLunes);
 
-        jLabel2.setText("Martes");
-        jPanel1.add(jLabel2);
+        jLabelMartes.setText("Martes");
+        jPanelDias.add(jLabelMartes);
 
-        jLabel3.setText("Miércoles");
-        jPanel1.add(jLabel3);
+        jLabelMiercoles.setText("Miércoles");
+        jPanelDias.add(jLabelMiercoles);
 
-        jLabel4.setText("Jueves");
-        jPanel1.add(jLabel4);
+        jLabelJueves.setText("Jueves");
+        jPanelDias.add(jLabelJueves);
 
-        jLabel5.setText("Viernes");
-        jPanel1.add(jLabel5);
+        jLabelViernes.setText("Viernes");
+        jPanelDias.add(jLabelViernes);
 
-        jLabel6.setText("Sábado");
-        jPanel1.add(jLabel6);
+        jLabelSabado.setText("Sábado");
+        jPanelDias.add(jLabelSabado);
 
-        jLabel7.setText("Domingo");
-        jPanel1.add(jLabel7);
+        jLabelDomingo.setText("Domingo");
+        jPanelDias.add(jLabelDomingo);
 
-        getContentPane().add(jPanel1);
+        getContentPane().add(jPanelDias);
 
-        jPanel2.setLayout(new java.awt.GridLayout(0, 1));
+        jPanelMedio.setLayout(new java.awt.GridLayout(0, 1));
 
-        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
+        jPanelPantalla.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTextField1.setText("Hora");
-        jPanel4.add(jTextField1);
+        jTextFieldHora.setText("Hora");
+        jPanelPantalla.add(jTextFieldHora);
 
-        jTextField2.setText("Temperatura");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldTemp.setText("Temperatura");
+        jTextFieldTemp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldTempActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField2);
+        jPanelPantalla.add(jTextFieldTemp);
 
-        jPanel2.add(jPanel4);
+        jPanelMedio.add(jPanelPantalla);
 
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel8.setText("Programa actual:");
+        jLabelActualProgram.setText("Programa actual:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxPrograms.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxPrograms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxProgramsActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelSelectProgramLayout = new javax.swing.GroupLayout(jPanelSelectProgram);
+        jPanelSelectProgram.setLayout(jPanelSelectProgramLayout);
+        jPanelSelectProgramLayout.setHorizontalGroup(
+            jPanelSelectProgramLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSelectProgramLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelSelectProgramLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelActualProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxPrograms, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        jPanelSelectProgramLayout.setVerticalGroup(
+            jPanelSelectProgramLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSelectProgramLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelActualProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxPrograms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        jPanel5.add(jPanel8);
+        jPanel5.add(jPanelSelectProgram);
 
-        jToggleButton1.setText("0-3");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jToggleButtonHora03.setText("0-3");
+        jToggleButtonHora03.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jToggleButtonHora03ActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setText("4-7");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        jToggleButtonHora47.setText("4-7");
+        jToggleButtonHora47.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                jToggleButtonHora47ActionPerformed(evt);
             }
         });
 
-        jToggleButton3.setText("8-11");
-        jToggleButton3.setMaximumSize(new java.awt.Dimension(48, 27));
-        jToggleButton3.setMinimumSize(new java.awt.Dimension(48, 27));
+        jToggleButtonHora811.setText("8-11");
+        jToggleButtonHora811.setMaximumSize(new java.awt.Dimension(48, 27));
+        jToggleButtonHora811.setMinimumSize(new java.awt.Dimension(48, 27));
 
-        jToggleButton4.setText("12-15");
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+        jToggleButtonHora1215.setText("12-15");
+        jToggleButtonHora1215.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
+                jToggleButtonHora1215ActionPerformed(evt);
             }
         });
 
-        jToggleButton5.setText("16-19");
-        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+        jToggleButtonHora1619.setText("16-19");
+        jToggleButtonHora1619.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton5ActionPerformed(evt);
+                jToggleButtonHora1619ActionPerformed(evt);
             }
         });
 
-        jToggleButton6.setText("20-23");
+        jToggleButtonHora2023.setText("20-23");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelSelectHorasLayout = new javax.swing.GroupLayout(jPanelSelectHoras);
+        jPanelSelectHoras.setLayout(jPanelSelectHorasLayout);
+        jPanelSelectHorasLayout.setHorizontalGroup(
+            jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSelectHorasLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jToggleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jToggleButtonHora1215, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToggleButtonHora03, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jToggleButton5)
+                .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelSelectHorasLayout.createSequentialGroup()
+                        .addComponent(jToggleButtonHora1619)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton6))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jToggleButtonHora2023))
+                    .addGroup(jPanelSelectHorasLayout.createSequentialGroup()
+                        .addComponent(jToggleButtonHora47, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jToggleButtonHora811, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        jPanelSelectHorasLayout.setVerticalGroup(
+            jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSelectHorasLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jToggleButton2)
-                    .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButtonHora03)
+                    .addComponent(jToggleButtonHora47)
+                    .addComponent(jToggleButtonHora811, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton4)
-                    .addComponent(jToggleButton5)
-                    .addComponent(jToggleButton6))
+                .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButtonHora1215)
+                    .addComponent(jToggleButtonHora1619)
+                    .addComponent(jToggleButtonHora2023))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jPanel5.add(jPanel7);
+        jPanel5.add(jPanelSelectHoras);
 
-        jLabel9.setText("Horas:");
+        jLabelHoras.setText("Horas:");
 
-        jButton1.setText("Iniciar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonIniciar.setText("Iniciar");
+        jButtonIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonIniciarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelSelectInitLayout = new javax.swing.GroupLayout(jPanelSelectInit);
+        jPanelSelectInit.setLayout(jPanelSelectInitLayout);
+        jPanelSelectInitLayout.setHorizontalGroup(
+            jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSelectInitLayout.createSequentialGroup()
                 .addContainerGap(43, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                .addGroup(jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelSelectInitLayout.createSequentialGroup()
+                        .addComponent(jLabelHoras)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSpinnerSelectHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        jPanelSelectInitLayout.setVerticalGroup(
+            jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSelectInitLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinnerSelectHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(jButtonIniciar)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel5.add(jPanel6);
+        jPanel5.add(jPanelSelectInit);
 
-        jPanel2.add(jPanel5);
+        jPanelMedio.add(jPanel5);
 
-        getContentPane().add(jPanel2);
+        getContentPane().add(jPanelMedio);
 
-        jToggleButton7.setText("Encender");
-        jPanel3.add(jToggleButton7);
-
-        buttonGroup1.add(jToggleButton8);
-        jToggleButton8.setText("Manual");
-        jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
+        jToggleButtonOn.setText("Encender");
+        jToggleButtonOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton8ActionPerformed(evt);
+                jToggleButtonOnActionPerformed(evt);
             }
         });
-        jPanel3.add(jToggleButton8);
+        jPanelOpciones.add(jToggleButtonOn);
 
-        buttonGroup1.add(jToggleButton9);
-        jToggleButton9.setText("Automático");
-        jToggleButton9.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(jToggleButtonManual);
+        jToggleButtonManual.setText("Manual");
+        jToggleButtonManual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton9ActionPerformed(evt);
+                jToggleButtonManualActionPerformed(evt);
             }
         });
-        jPanel3.add(jToggleButton9);
+        jPanelOpciones.add(jToggleButtonManual);
 
-        buttonGroup1.add(jToggleButton10);
-        jToggleButton10.setText("Editar");
-        jPanel3.add(jToggleButton10);
+        buttonGroup1.add(jToggleButtonAuto);
+        jToggleButtonAuto.setText("Automático");
+        jToggleButtonAuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButtonAutoActionPerformed(evt);
+            }
+        });
+        jPanelOpciones.add(jToggleButtonAuto);
 
-        getContentPane().add(jPanel3);
+        buttonGroup1.add(jToggleButtonEdit);
+        jToggleButtonEdit.setText("Editar");
+        jPanelOpciones.add(jToggleButtonEdit);
+
+        getContentPane().add(jPanelOpciones);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void jToggleButtonHora47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonHora47ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_jToggleButtonHora47ActionPerformed
 
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+    private void jToggleButtonHora1215ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonHora1215ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
+    }//GEN-LAST:event_jToggleButtonHora1215ActionPerformed
 
-    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+    private void jToggleButtonHora1619ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonHora1619ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton5ActionPerformed
+    }//GEN-LAST:event_jToggleButtonHora1619ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBoxProgramsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProgramsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxProgramsActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonIniciarActionPerformed
 
-    private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
+    private void jToggleButtonManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonManualActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton8ActionPerformed
+    }//GEN-LAST:event_jToggleButtonManualActionPerformed
 
-    private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
+    private void jToggleButtonAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonAutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton9ActionPerformed
+    }//GEN-LAST:event_jToggleButtonAutoActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTempActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldTempActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void jToggleButtonHora03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonHora03ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_jToggleButtonHora03ActionPerformed
 
-   
+    private void jToggleButtonOnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonOnActionPerformed
+        miControl.powerButtonSwitch();
+    }//GEN-LAST:event_jToggleButtonOnActionPerformed
+    
+    
+    /**
+     * Obtiene el jPanelDias
+     * @return jPanelDias
+     */
+    public JPanel getPanelDias(){
+        return this.jPanelDias;
+    }
+    
+    
+    /**
+     * Obtiene el jPanelOpciones
+     * @return jPanelOpciones
+     */
+    public JPanel getPanelOpciones(){
+        return this.jPanelOpciones;
+    }
+
+    
+    /**
+     * Obtiene el jPanelMedio
+     * @return jPanelOpciones
+     */
+    public JPanel getPanelMedio(){
+        return this.jPanelMedio;
+    }
+    
+    
+    /**
+     * Obtiene el jToggleButtonAuto
+     * @return jToggleButtonAuto
+     */
+    public JToggleButton getToggleButtonAuto(){
+        return this.jToggleButtonAuto;
+    }
+    
+    
+    /**
+     * Obtiene el jToggleButtonOn
+     * @return jToggleButtonOn
+     */
+    public JToggleButton getToggleButtonOn(){
+        return this.jToggleButtonOn;
+    }
+    
+    
+    /**
+     * Obtiene el jToggleButtonOn
+     * @return jToggleButtonOn
+     */
+    public JToggleButton getToggleButtonManual(){
+        return this.jToggleButtonManual;
+    }
+    
+    
+    /**
+     * Obtiene el jToggleButtonEdit
+     * @return jToggleButtonEdit
+     */
+    public JToggleButton getToggleButtonEdit(){
+        return this.jToggleButtonEdit;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton jButtonIniciar;
+    private javax.swing.JComboBox<String> jComboBoxPrograms;
+    private javax.swing.JLabel jLabelActualProgram;
+    private javax.swing.JLabel jLabelDomingo;
+    private javax.swing.JLabel jLabelHoras;
+    private javax.swing.JLabel jLabelJueves;
+    private javax.swing.JLabel jLabelLunes;
+    private javax.swing.JLabel jLabelMartes;
+    private javax.swing.JLabel jLabelMiercoles;
+    private javax.swing.JLabel jLabelSabado;
+    private javax.swing.JLabel jLabelViernes;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton10;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
-    private javax.swing.JToggleButton jToggleButton6;
-    private javax.swing.JToggleButton jToggleButton7;
-    private javax.swing.JToggleButton jToggleButton8;
-    private javax.swing.JToggleButton jToggleButton9;
+    private javax.swing.JPanel jPanelDias;
+    private javax.swing.JPanel jPanelMedio;
+    private javax.swing.JPanel jPanelOpciones;
+    private javax.swing.JPanel jPanelPantalla;
+    private javax.swing.JPanel jPanelSelectHoras;
+    private javax.swing.JPanel jPanelSelectInit;
+    private javax.swing.JPanel jPanelSelectProgram;
+    private javax.swing.JSpinner jSpinnerSelectHora;
+    private javax.swing.JTextField jTextFieldHora;
+    private javax.swing.JTextField jTextFieldTemp;
+    private javax.swing.JToggleButton jToggleButtonAuto;
+    private javax.swing.JToggleButton jToggleButtonEdit;
+    private javax.swing.JToggleButton jToggleButtonHora03;
+    private javax.swing.JToggleButton jToggleButtonHora1215;
+    private javax.swing.JToggleButton jToggleButtonHora1619;
+    private javax.swing.JToggleButton jToggleButtonHora2023;
+    private javax.swing.JToggleButton jToggleButtonHora47;
+    private javax.swing.JToggleButton jToggleButtonHora811;
+    private javax.swing.JToggleButton jToggleButtonManual;
+    private javax.swing.JToggleButton jToggleButtonOn;
     // End of variables declaration//GEN-END:variables
 }
