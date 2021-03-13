@@ -15,7 +15,8 @@ import my.termoModelo.ModeloTermo;
 
 /**
  *
- * @author juan
+ * @author Juan Antonio Pagés
+ * @author Fernando San José
  */
 public class VistaUI extends javax.swing.JFrame {
     private ControladorTermo miControl;
@@ -63,10 +64,10 @@ public class VistaUI extends javax.swing.JFrame {
         jPanelSelectHoras = new javax.swing.JPanel();
         jToggleButtonHora03 = new javax.swing.JToggleButton();
         jToggleButtonHora47 = new javax.swing.JToggleButton();
-        jToggleButtonHora811 = new javax.swing.JToggleButton();
         jToggleButtonHora1215 = new javax.swing.JToggleButton();
         jToggleButtonHora1619 = new javax.swing.JToggleButton();
         jToggleButtonHora2023 = new javax.swing.JToggleButton();
+        jToggleButtonHora811 = new javax.swing.JToggleButton();
         jPanelSelectInit = new javax.swing.JPanel();
         jLabelHoras = new javax.swing.JLabel();
         jSpinnerSelectHora = new javax.swing.JSpinner();
@@ -76,17 +77,18 @@ public class VistaUI extends javax.swing.JFrame {
         jLabelMaxima = new javax.swing.JLabel();
         jSpinnerMaxima = new javax.swing.JSpinner();
         jPanelOpciones = new javax.swing.JPanel();
+        jLabelIcono = new javax.swing.JLabel();
         jToggleButtonOn = new javax.swing.JToggleButton();
         jToggleButtonManual = new javax.swing.JToggleButton();
         jToggleButtonAuto = new javax.swing.JToggleButton();
         jToggleButtonEdit = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 184));
+        setPreferredSize(new java.awt.Dimension(800, 300));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         jLabelLunes.setText("Lunes");
-        jLabelLunes.setMaximumSize(new java.awt.Dimension(42, 17));
-        jLabelLunes.setMinimumSize(new java.awt.Dimension(42, 17));
         jPanelDias.add(jLabelLunes);
 
         jLabelMartes.setText("Martes");
@@ -136,7 +138,7 @@ public class VistaUI extends javax.swing.JFrame {
 
         jLabelActualProgram.setText("Programa actual:");
 
-        jComboBoxPrograms.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Programa 1", "Programa 2", "Programa 3", "Programa 4" }));
+        jComboBoxPrograms.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Programa 1", "Programa 2", "Programa 3" }));
         jComboBoxPrograms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxProgramsActionPerformed(evt);
@@ -161,7 +163,7 @@ public class VistaUI extends javax.swing.JFrame {
                 .addComponent(jLabelActualProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxPrograms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanelSelectProgram);
@@ -186,16 +188,6 @@ public class VistaUI extends javax.swing.JFrame {
             }
         });
 
-        jToggleButtonHora811.setText("8-11");
-        jToggleButtonHora811.setMaximumSize(new java.awt.Dimension(48, 27));
-        jToggleButtonHora811.setMinimumSize(new java.awt.Dimension(48, 27));
-        jToggleButtonHora811.setPreferredSize(new java.awt.Dimension(48, 27));
-        jToggleButtonHora811.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonHora811ActionPerformed(evt);
-            }
-        });
-
         jToggleButtonHora1215.setText("12-15");
         jToggleButtonHora1215.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,41 +204,49 @@ public class VistaUI extends javax.swing.JFrame {
 
         jToggleButtonHora2023.setText("20-23");
 
+        jToggleButtonHora811.setText("8-11");
+        jToggleButtonHora811.setMaximumSize(new java.awt.Dimension(40, 27));
+        jToggleButtonHora811.setMinimumSize(new java.awt.Dimension(40, 27));
+        jToggleButtonHora811.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButtonHora811ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelSelectHorasLayout = new javax.swing.GroupLayout(jPanelSelectHoras);
         jPanelSelectHoras.setLayout(jPanelSelectHorasLayout);
         jPanelSelectHorasLayout.setHorizontalGroup(
             jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSelectHorasLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(44, 44, 44)
+                .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jToggleButtonHora03, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonHora1215, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jToggleButtonHora1215))
+                .addGap(6, 6, 6)
+                .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jToggleButtonHora47, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButtonHora1619))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelSelectHorasLayout.createSequentialGroup()
-                        .addComponent(jToggleButtonHora1619)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButtonHora2023))
-                    .addGroup(jPanelSelectHorasLayout.createSequentialGroup()
-                        .addComponent(jToggleButtonHora47, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButtonHora811, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jToggleButtonHora2023, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToggleButtonHora811, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68))
         );
         jPanelSelectHorasLayout.setVerticalGroup(
             jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSelectHorasLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButtonHora03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButtonHora47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jToggleButtonHora03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jToggleButtonHora47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jToggleButtonHora811, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelSelectHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButtonHora1215)
                     .addComponent(jToggleButtonHora1619)
                     .addComponent(jToggleButtonHora2023))
-                .addGap(30, 30, 30))
+                .addContainerGap())
         );
 
         jPanel5.add(jPanelSelectHoras);
@@ -270,40 +270,39 @@ public class VistaUI extends javax.swing.JFrame {
             jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSelectInitLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanelSelectInitLayout.createSequentialGroup()
+                .addGroup(jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSelectInitLayout.createSequentialGroup()
                         .addComponent(jLabelHoras)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSpinnerSelectHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelSelectInitLayout.createSequentialGroup()
                         .addComponent(jLabelMinima)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSpinnerMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelSelectInitLayout.createSequentialGroup()
                         .addComponent(jLabelMaxima)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSpinnerMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelSelectInitLayout.setVerticalGroup(
             jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSelectInitLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelMinima, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSpinnerMinima, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelMaxima, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSpinnerMaxima, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jSpinnerSelectHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonIniciar)))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelSelectInitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jSpinnerSelectHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonIniciar)
+                    .addComponent(jLabelHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
 
         jPanel5.add(jPanelSelectInit);
@@ -312,7 +311,12 @@ public class VistaUI extends javax.swing.JFrame {
 
         getContentPane().add(jPanelMedio);
 
-        jToggleButtonOn.setText("Encender");
+        jLabelIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/termoVista/Manual.png"))); // NOI18N
+        jPanelOpciones.add(jLabelIcono);
+
+        jToggleButtonOn.setFont(new java.awt.Font("Ubuntu", 3, 15)); // NOI18N
+        jToggleButtonOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/my/termoVista/BotonEncender.png"))); // NOI18N
+        jToggleButtonOn.setText("ON  ");
         jToggleButtonOn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButtonOnActionPerformed(evt);
@@ -322,6 +326,8 @@ public class VistaUI extends javax.swing.JFrame {
 
         buttonGroup1.add(jToggleButtonManual);
         jToggleButtonManual.setText("Manual");
+        jToggleButtonManual.setMaximumSize(new java.awt.Dimension(61, 37));
+        jToggleButtonManual.setMinimumSize(new java.awt.Dimension(61, 37));
         jToggleButtonManual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButtonManualActionPerformed(evt);
@@ -392,13 +398,13 @@ public class VistaUI extends javax.swing.JFrame {
         miControl.powerButtonSwitch();
     }//GEN-LAST:event_jToggleButtonOnActionPerformed
 
-    private void jToggleButtonHora811ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonHora811ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButtonHora811ActionPerformed
-
     private void jToggleButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonEditActionPerformed
         miControl.cambiaModo(2);
     }//GEN-LAST:event_jToggleButtonEditActionPerformed
+
+    private void jToggleButtonHora811ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonHora811ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButtonHora811ActionPerformed
     
     
     /**
@@ -591,6 +597,14 @@ public class VistaUI extends javax.swing.JFrame {
         return this.jTextFieldHora;
     }
     
+    /**
+     * Obtiene el jLabelIcono
+     * @return jLabelIcono
+     */
+    public JLabel getLabelIcono(){
+        return this.jLabelIcono;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -599,6 +613,7 @@ public class VistaUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelActualProgram;
     private javax.swing.JLabel jLabelDomingo;
     private javax.swing.JLabel jLabelHoras;
+    private javax.swing.JLabel jLabelIcono;
     private javax.swing.JLabel jLabelJueves;
     private javax.swing.JLabel jLabelLunes;
     private javax.swing.JLabel jLabelMartes;

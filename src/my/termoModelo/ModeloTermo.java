@@ -8,7 +8,8 @@ package my.termoModelo;
 
 /**
  *
- * @author juan
+ * @author Juan Antonio Pagés
+ * @author Fernando San José
  */
 public class ModeloTermo {
     private boolean power;

@@ -11,10 +11,12 @@ import javax.swing.JPanel;
 import my.termoModelo.ModeloTermo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import javax.swing.ImageIcon;
 
 /**
  *
- * @author juan
+ * @author Juan Antonio Pagés
+ * @author Fernando San José
  */
 public class ControladorTermo {
     private VistaUI miVista;
@@ -62,9 +64,16 @@ public class ControladorTermo {
         miVista.getLabelMaxima().setVisible(false);
         miVista.getLabelMinima().setVisible(false);
         
+        miVista.getToggleButtonOn().setText("ON  ");
+        
         
     }
     
+    /**
+     * 
+     * Cambia entre los modos Automático, Manual y Editar
+     * @param modo 
+     */
     public void cambiaModo(int modo){
         
         miModelo.setModo(modo);
@@ -84,6 +93,9 @@ public class ControladorTermo {
                 miVista.getLabelMaxima().setVisible(false);
                 miVista.getLabelMinima().setVisible(false);
                 
+                
+                miVista.getLabelIcono().setIcon(new ImageIcon("Auto.png"));
+                
                 break;
             
             case 1: //Manual
@@ -99,6 +111,8 @@ public class ControladorTermo {
                 miVista.getLabelMaxima().setVisible(false);
                 miVista.getLabelMinima().setVisible(false);
                 
+                miVista.getLabelIcono().setIcon(new ImageIcon("imagenManual.jpg"));
+                
                 break;
                 
             case 2: //Editar
@@ -113,6 +127,8 @@ public class ControladorTermo {
                 miVista.getLabelHoras().setVisible(false);
                 miVista.getSpinnerSelectHora().setVisible(false);
                 miVista.getButtonIniciar().setVisible(false);
+                
+                miVista.getLabelIcono().setIcon(null);
                 
                 break;
             
@@ -134,6 +150,7 @@ public class ControladorTermo {
             setPanelEnabled(miVista.getPanelMedio(), true);
             setPanelEnabled(miVista.getPanelOpciones(), true);
             setPanelEnabled(miVista.getPanelSelectHoras(), false);
+            miVista.getToggleButtonOn().setText("OFF");
             
         }else{
             
@@ -144,11 +161,12 @@ public class ControladorTermo {
             miVista.getToggleButtonAuto().setEnabled(false);
             miVista.getToggleButtonManual().setEnabled(false);
             miVista.getToggleButtonEdit().setEnabled(false);
+            miVista.getToggleButtonOn().setText("ON  ");
         }
     }
     
     /**
-     * Establece la hora actual
+     * Establece la hora actual del sistema
      */
     public void setLocalHour(){
         
@@ -172,7 +190,7 @@ public class ControladorTermo {
     }
     
     /**
-     * Establece el dia de la semana
+     * Establece el día de la semana del sistema
      */
     public void setDayOfWeek(){
         

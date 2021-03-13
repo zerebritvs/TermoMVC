@@ -8,8 +8,10 @@ package my.termo;
 import my.termoVista.VistaUI;
 
 /**
- *
- * @author juan
+ *Clase Main
+ * 
+ * @author Juan Antonio Pagés
+ * @author Fernando San José
  */
 public class Main {
      /**
