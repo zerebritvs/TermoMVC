@@ -11,7 +11,10 @@ import javax.swing.JPanel;
 import my.termoModelo.ModeloTermo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JToggleButton;
+import my.termoModelo.Programa;
 
 /**
  *
@@ -64,6 +67,16 @@ public class ControladorTermo {
         miVista.getLabelMaxima().setVisible(false);
         miVista.getLabelMinima().setVisible(false);
         
+        /*System.out.println("Inicializa programas1");
+        for(Programa p : miModelo.getPrograma()){
+           
+           System.out.println("Crea un programa nuevo1");
+           p = new Programa();
+           System.out.println("Crea un programa nuevo2");
+        }
+        System.out.println("Inicializa programas2");*/
+        miVista.getLabelIcono().setIcon(new ImageIcon(getClass().getResource("/my/termoVista/VACIO.png")));
+        
         miVista.getToggleButtonOn().setText("ON  ");
         
         
@@ -93,8 +106,7 @@ public class ControladorTermo {
                 miVista.getLabelMaxima().setVisible(false);
                 miVista.getLabelMinima().setVisible(false);
                 
-                
-                miVista.getLabelIcono().setIcon(new ImageIcon("Auto.png"));
+                miVista.getLabelIcono().setIcon(new ImageIcon(getClass().getResource("/my/termoVista/Auto.png")));
                 
                 break;
             
@@ -111,7 +123,8 @@ public class ControladorTermo {
                 miVista.getLabelMaxima().setVisible(false);
                 miVista.getLabelMinima().setVisible(false);
                 
-                miVista.getLabelIcono().setIcon(new ImageIcon("imagenManual.jpg"));
+                miVista.getLabelIcono().setIcon(new ImageIcon(getClass().getResource("/my/termoVista/Manual.png")));
+        
                 
                 break;
                 
@@ -128,7 +141,7 @@ public class ControladorTermo {
                 miVista.getSpinnerSelectHora().setVisible(false);
                 miVista.getButtonIniciar().setVisible(false);
                 
-                miVista.getLabelIcono().setIcon(null);
+                miVista.getLabelIcono().setIcon(new ImageIcon(getClass().getResource("/my/termoVista/VACIO.png")));
                 
                 break;
             
@@ -150,7 +163,9 @@ public class ControladorTermo {
             setPanelEnabled(miVista.getPanelMedio(), true);
             setPanelEnabled(miVista.getPanelOpciones(), true);
             setPanelEnabled(miVista.getPanelSelectHoras(), false);
+            miVista.getLabelIcono().setVisible(true);
             miVista.getToggleButtonOn().setText("OFF");
+            
             
         }else{
             
@@ -161,8 +176,75 @@ public class ControladorTermo {
             miVista.getToggleButtonAuto().setEnabled(false);
             miVista.getToggleButtonManual().setEnabled(false);
             miVista.getToggleButtonEdit().setEnabled(false);
+            miVista.getLabelIcono().setVisible(false);
             miVista.getToggleButtonOn().setText("ON  ");
+            
         }
+    }
+    
+    public void selectPrograms(){
+        
+        int programa = miVista.getComboBoxPrograms().getSelectedIndex();
+        Programa temp = miModelo.getPrograma().get(miVista.getComboBoxPrograms().getSelectedIndex());
+        
+        Component[]comps = miVista.getPanelSelectHoras().getComponents();
+        JToggleButton []botones = new JToggleButton [6];
+        
+        for(int i = 0; i < comps.length; i++){
+            botones[i] = (JToggleButton)comps[i];
+        }
+        
+        for(int j = 0; j < comps.length; j++){
+            
+            if(temp.getProgramButtons().get(j)){
+                botones[j].setSelected(true);
+                
+            }else{
+                botones[j].setSelected(false);
+            }
+            
+        }
+        
+    }
+    
+    public void editPrograms(int button){
+        
+        int programa = miVista.getComboBoxPrograms().getSelectedIndex();
+        
+        switch(programa){
+            
+            case 0:
+                //miModelo.getPrograma().get(0).setMax((int)miVista.getSpinnerMaxima().getValue());
+                //miModelo.getPrograma().get(0).setMin((int)miVista.getSpinnerMinima().getValue());
+                System.out.println(button);
+                
+                boolean select = miModelo.getPrograma().get(0).getProgramButtons().get(button);
+                miModelo.getPrograma().get(0).getProgramButtons().set(button, !select);
+                
+                
+                break;
+            
+            case 1:
+                //miModelo.getPrograma().get(1).setMax((int)miVista.getSpinnerMaxima().getValue());
+                //miModelo.getPrograma().get(1).setMin((int)miVista.getSpinnerMinima().getValue());
+                
+                boolean select2 = miModelo.getPrograma().get(1).getProgramButtons().get(button);
+                miModelo.getPrograma().get(1).getProgramButtons().set(button, !select2);
+                
+                break;
+                
+            case 2:
+                //miModelo.getPrograma().get(2).setMax((int)miVista.getSpinnerMaxima().getValue());
+                //miModelo.getPrograma().get(2).setMin((int)miVista.getSpinnerMinima().getValue());
+                
+                boolean select3 = miModelo.getPrograma().get(2).getProgramButtons().get(button);
+                miModelo.getPrograma().get(2).getProgramButtons().set(button, !select3);
+                
+                
+                break;
+            
+        }
+        
     }
     
     /**

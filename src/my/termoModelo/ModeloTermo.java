@@ -5,6 +5,8 @@
  */
 package my.termoModelo;
 
+import java.util.ArrayList;
+
 
 /**
  *
@@ -12,17 +14,27 @@ package my.termoModelo;
  * @author Fernando San José
  */
 public class ModeloTermo {
+    
     private boolean power;
     private int modo;
+    ArrayList<Programa> programas;
     
     
     /**
      * Constructor de ModeloTermo
      */
     public ModeloTermo(){
+        
         power = false;
         modo = 0;
- 
+        programas = new ArrayList<>(3);
+      
+        
+        for(int i=0; i<3;i++){
+            
+            programas.add(new Programa());
+            
+        }
        
     }
     
@@ -57,4 +69,22 @@ public class ModeloTermo {
     public int getModo(){
         return this.modo;
     }
+    
+    /**
+     * Obtiene los programas
+     * @return programas
+     */
+    public ArrayList<Programa> getPrograma(){
+        
+        return this.programas;
+    }
+    
+    /**
+     * Almacena los programas
+     * @param p
+     */
+    public void setPrograma(ArrayList<Programa> p){
+        this.programas= p;
+    }
+    
 }
