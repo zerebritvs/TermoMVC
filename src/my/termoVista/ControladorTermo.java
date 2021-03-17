@@ -67,17 +67,12 @@ public class ControladorTermo {
         miVista.getLabelMaxima().setVisible(false);
         miVista.getLabelMinima().setVisible(false);
         
-        /*System.out.println("Inicializa programas1");
-        for(Programa p : miModelo.getPrograma()){
-           
-           System.out.println("Crea un programa nuevo1");
-           p = new Programa();
-           System.out.println("Crea un programa nuevo2");
-        }
-        System.out.println("Inicializa programas2");*/
-        miVista.getLabelIcono().setIcon(new ImageIcon(getClass().getResource("/my/termoVista/VACIO.png")));
+        miVista.getLabelIcono().setIcon(new ImageIcon(getClass().getResource("/my/termoVista/Vacio.png")));
         
         miVista.getToggleButtonOn().setText("ON  ");
+        
+        miVista.getSpinnerMinima().setValue(0);
+        miVista.getSpinnerMaxima().setValue(0);
         
         
     }
@@ -101,10 +96,15 @@ public class ControladorTermo {
                 miVista.getSpinnerSelectHora().setVisible(false);
                 miVista.getButtonIniciar().setVisible(false);
                 
-                miVista.getSpinnerMaxima().setVisible(false);
-                miVista.getSpinnerMinima().setVisible(false);
-                miVista.getLabelMaxima().setVisible(false);
-                miVista.getLabelMinima().setVisible(false);
+                miVista.getSpinnerMaxima().setVisible(true);
+                miVista.getSpinnerMinima().setVisible(true);
+                miVista.getLabelMaxima().setVisible(true);
+                miVista.getLabelMinima().setVisible(true);
+                
+                miVista.getSpinnerMaxima().setEnabled(false);
+                miVista.getSpinnerMinima().setEnabled(false);
+                miVista.getLabelMaxima().setEnabled(false);
+                miVista.getLabelMinima().setEnabled(false);
                 
                 miVista.getLabelIcono().setIcon(new ImageIcon(getClass().getResource("/my/termoVista/Auto.png")));
                 
@@ -136,12 +136,17 @@ public class ControladorTermo {
                 miVista.getSpinnerMinima().setVisible(true);
                 miVista.getLabelMaxima().setVisible(true);
                 miVista.getLabelMinima().setVisible(true);
+                
+                miVista.getSpinnerMaxima().setEnabled(true);
+                miVista.getSpinnerMinima().setEnabled(true);
+                miVista.getLabelMaxima().setEnabled(true);
+                miVista.getLabelMinima().setEnabled(true);
             
                 miVista.getLabelHoras().setVisible(false);
                 miVista.getSpinnerSelectHora().setVisible(false);
                 miVista.getButtonIniciar().setVisible(false);
                 
-                miVista.getLabelIcono().setIcon(new ImageIcon(getClass().getResource("/my/termoVista/VACIO.png")));
+                miVista.getLabelIcono().setIcon(new ImageIcon(getClass().getResource("/my/termoVista/Vacio.png")));
                 
                 break;
             
@@ -182,10 +187,38 @@ public class ControladorTermo {
         }
     }
     
+    /**
+     * 
+     */
+    public void setIniciar(){
+         
+        if(!miVista.getTextFieldTemp().getForeground().equals(Color.red)){
+                miVista.getTextFieldTemp().setForeground(Color.red);
+        }else{
+            miVista.getTextFieldTemp().setForeground(Color.black);
+        }
+        
+        
+    }
+    
+    /**
+     * Alterna entre los diferentes programas mostrando en la interfaz la información correspondiente
+     */
     public void selectPrograms(){
         
-        int programa = miVista.getComboBoxPrograms().getSelectedIndex();
         Programa temp = miModelo.getPrograma().get(miVista.getComboBoxPrograms().getSelectedIndex());
+        
+        for(int i = 0; i < 2; i++){
+            
+            if(i==0){
+                miVista.getSpinnerMinima().setValue(temp.getProgramTemps().get(i));
+            }else{
+                miVista.getSpinnerMaxima().setValue(temp.getProgramTemps().get(i));
+            }
+        }
+        
+        //miVista.getSpinnerMinima().setValue(temp.getMin());
+        //miVista.getSpinnerMaxima().setValue(temp.getMax());
         
         Component[]comps = miVista.getPanelSelectHoras().getComponents();
         JToggleButton []botones = new JToggleButton [6];
@@ -194,7 +227,7 @@ public class ControladorTermo {
             botones[i] = (JToggleButton)comps[i];
         }
         
-        for(int j = 0; j < comps.length; j++){
+        for(int j = 0; j < botones.length; j++){
             
             if(temp.getProgramButtons().get(j)){
                 botones[j].setSelected(true);
@@ -207,6 +240,10 @@ public class ControladorTermo {
         
     }
     
+    /**
+     * Almacena la información de los botones de los programas
+     * @param button 
+     */
     public void editPrograms(int button){
         
         int programa = miVista.getComboBoxPrograms().getSelectedIndex();
@@ -214,9 +251,6 @@ public class ControladorTermo {
         switch(programa){
             
             case 0:
-                //miModelo.getPrograma().get(0).setMax((int)miVista.getSpinnerMaxima().getValue());
-                //miModelo.getPrograma().get(0).setMin((int)miVista.getSpinnerMinima().getValue());
-                System.out.println(button);
                 
                 boolean select = miModelo.getPrograma().get(0).getProgramButtons().get(button);
                 miModelo.getPrograma().get(0).getProgramButtons().set(button, !select);
@@ -225,8 +259,6 @@ public class ControladorTermo {
                 break;
             
             case 1:
-                //miModelo.getPrograma().get(1).setMax((int)miVista.getSpinnerMaxima().getValue());
-                //miModelo.getPrograma().get(1).setMin((int)miVista.getSpinnerMinima().getValue());
                 
                 boolean select2 = miModelo.getPrograma().get(1).getProgramButtons().get(button);
                 miModelo.getPrograma().get(1).getProgramButtons().set(button, !select2);
@@ -234,8 +266,6 @@ public class ControladorTermo {
                 break;
                 
             case 2:
-                //miModelo.getPrograma().get(2).setMax((int)miVista.getSpinnerMaxima().getValue());
-                //miModelo.getPrograma().get(2).setMin((int)miVista.getSpinnerMinima().getValue());
                 
                 boolean select3 = miModelo.getPrograma().get(2).getProgramButtons().get(button);
                 miModelo.getPrograma().get(2).getProgramButtons().set(button, !select3);
@@ -244,6 +274,53 @@ public class ControladorTermo {
                 break;
             
         }
+        
+    }
+    
+    
+    
+    
+    /**
+     * Almacena las temperaturas máximas y mínimas de los diferentes programas
+     */
+    public void editTemperatura(int temp){
+        
+        int programa = miVista.getComboBoxPrograms().getSelectedIndex();
+        
+        switch(programa){
+            
+            case 0:
+                
+                if(temp == 0){
+                    miModelo.getPrograma().get(0).getProgramTemps().set(temp, (Integer)miVista.getSpinnerMinima().getValue());
+                }else{
+                    miModelo.getPrograma().get(0).getProgramTemps().set(temp, (Integer)miVista.getSpinnerMaxima().getValue());
+                }
+                
+                
+                break;
+            
+            case 1:
+                
+                if(temp == 0){
+                    miModelo.getPrograma().get(1).getProgramTemps().set(temp, (Integer)miVista.getSpinnerMinima().getValue());
+                }else{
+                    miModelo.getPrograma().get(1).getProgramTemps().set(temp, (Integer)miVista.getSpinnerMaxima().getValue());
+                }
+                
+                break;
+                
+            case 2:
+                
+                if(temp == 0){
+                    miModelo.getPrograma().get(2).getProgramTemps().set(temp, (Integer)miVista.getSpinnerMinima().getValue());
+                }else{
+                    miModelo.getPrograma().get(2).getProgramTemps().set(temp, (Integer)miVista.getSpinnerMaxima().getValue());
+                }
+                            
+                break;
+            
+        }   
         
     }
     

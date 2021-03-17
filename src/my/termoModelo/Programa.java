@@ -13,19 +13,44 @@ import java.util.ArrayList;
  * @author Fernando San José
  */
 public class Programa {
+    
     private int max;
     private int min;
-    ArrayList<Boolean> p;
+    private ArrayList<Boolean> p;
+    private ArrayList<Integer> temps;
     
     public Programa(){
-        max = 25;
-        min = 19;
+        
+        max = 0;
+        min = 0;
+        
         p = new ArrayList<>(6);
+        temps = new ArrayList<>(2);
         
         for (int i=0; i<6; i++){
             p.add(false);
             
         }
+        
+        for(int i =0;i<2;i++){
+            temps.add(0);
+        }
+    }
+    
+    /**
+     * Obtiene las temperaturas mínima y máxima
+     * @return temps
+     */
+    public ArrayList<Integer> getProgramTemps(){
+        return this.temps;
+    }
+    
+    /**
+     * Almacena las temperaturas mínima y máxima
+     * @param temps
+     */
+    public void setProgramTemps(ArrayList<Integer> temps){
+        this.temps = temps;
     }
     
     /**
@@ -61,7 +86,6 @@ public class Programa {
      * @return ArrayList de booleans 
      */
     public ArrayList<Boolean> getProgramButtons(){
-       
         return this.p;
     }
     /**
