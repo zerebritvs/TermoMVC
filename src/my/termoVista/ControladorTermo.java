@@ -17,7 +17,7 @@ import javax.swing.JToggleButton;
 import my.termoModelo.Programa;
 
 /**
- * Clase Controlador del modelo MVC
+ * Clase Controlador del patrón de diseño MVC
  * @author Juan Antonio Pagés
  * @author Fernando San José
  */
@@ -272,6 +272,7 @@ public class ControladorTermo {
     
     /**
      * Almacena las temperaturas máximas y mínimas de los diferentes programas en Programa
+     * @param temp
      */
     public void editTemperatura(int temp){
         

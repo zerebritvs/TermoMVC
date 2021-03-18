@@ -15,7 +15,7 @@ import javax.swing.JToggleButton;
 import my.termoModelo.ModeloTermo;
 
 /**
- * Clase VistaUI
+ * Clase VistaUI del patrón de diseño MVC
  * @author Juan Antonio Pagés
  * @author Fernando San José
  */
@@ -25,7 +25,7 @@ public class VistaUI extends javax.swing.JFrame {
     private ModeloTermo miModelo;
     
     /**
-     * Creates new form VistaUI
+     * Constructor de VistaUI
      */
     public VistaUI() {
         

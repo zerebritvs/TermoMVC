@@ -43,7 +43,7 @@ public class Programa {
     }
     
     /**
-     * Almacena el ArrayList con las temperaturas
+     * Almacena el ArrayList con las temperaturas siendo la posición 0 la mínima y la 1 la máxima
      * @param temps
      */
     public void setProgramTemps(ArrayList<Integer> temps){

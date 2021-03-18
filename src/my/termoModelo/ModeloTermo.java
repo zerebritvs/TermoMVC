@@ -66,7 +66,7 @@ public class ModeloTermo {
     }
     
     /**
-     * Obtiene los programas
+     * Obtiene un ArrayList con los programas
      * @return programas
      */
     public ArrayList<Programa> getPrograma(){
@@ -75,7 +75,7 @@ public class ModeloTermo {
     }
     
     /**
-     * Almacena los programas
+     * Almacena en un ArrayList los programas 
      * @param programas
      */
     public void setPrograma(ArrayList<Programa> programas){
