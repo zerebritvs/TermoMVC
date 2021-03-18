@@ -15,25 +15,27 @@ import javax.swing.JToggleButton;
 import my.termoModelo.ModeloTermo;
 
 /**
- *
+ * Clase VistaUI
  * @author Juan Antonio Pagés
  * @author Fernando San José
  */
 public class VistaUI extends javax.swing.JFrame {
+    
     private ControladorTermo miControl;
     private ModeloTermo miModelo;
+    
     /**
      * Creates new form VistaUI
      */
     public VistaUI() {
+        
         initComponents();
         miModelo = new ModeloTermo();
         miControl = new ControladorTermo(this, miModelo);
         miControl.initTermo();
         miControl.setDayOfWeek();
         miControl.setLocalHour();
-        
-        
+      
     }
 
     /**
@@ -86,7 +88,7 @@ public class VistaUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 184));
-        setPreferredSize(new java.awt.Dimension(900, 370));
+        setPreferredSize(new java.awt.Dimension(900, 350));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         jLabelLunes.setText("Lunes");
@@ -369,7 +371,7 @@ public class VistaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxProgramsActionPerformed
 
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
-        miControl.setIniciar();
+        miControl.setIniciarManual();
     }//GEN-LAST:event_jButtonIniciarActionPerformed
 
     private void jToggleButtonManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonManualActionPerformed
@@ -424,7 +426,6 @@ public class VistaUI extends javax.swing.JFrame {
         miControl.editTemperatura(1);
     }//GEN-LAST:event_jSpinnerMaximaStateChanged
     
-    
     /**
      * Obtiene el jPanelDias
      * @return jPanelDias
@@ -433,7 +434,6 @@ public class VistaUI extends javax.swing.JFrame {
         return this.jPanelDias;
     }
     
-    
     /**
      * Obtiene el jPanelOpciones
      * @return jPanelOpciones
@@ -441,16 +441,14 @@ public class VistaUI extends javax.swing.JFrame {
     public JPanel getPanelOpciones(){
         return this.jPanelOpciones;
     }
-
     
     /**
      * Obtiene el jPanelMedio
-     * @return jPanelOpciones
+     * @return jPanelMedio
      */
     public JPanel getPanelMedio(){
         return this.jPanelMedio;
     }
-    
     
     /**
      * Obtiene el jToggleButtonAuto
@@ -460,7 +458,6 @@ public class VistaUI extends javax.swing.JFrame {
         return this.jToggleButtonAuto;
     }
     
-    
     /**
      * Obtiene el jToggleButtonOn
      * @return jToggleButtonOn
@@ -469,7 +466,6 @@ public class VistaUI extends javax.swing.JFrame {
         return this.jToggleButtonOn;
     }
     
-    
     /**
      * Obtiene el jToggleButtonOn
      * @return jToggleButtonOn
@@ -477,7 +473,6 @@ public class VistaUI extends javax.swing.JFrame {
     public JToggleButton getToggleButtonManual(){
         return this.jToggleButtonManual;
     }
-    
     
     /**
      * Obtiene el jToggleButtonEdit
@@ -632,8 +627,8 @@ public class VistaUI extends javax.swing.JFrame {
     }
     
     /**
-     * Obtiene el jTextField
-     * @return jTextField
+     * Obtiene el jTextFieldTemp
+     * @return jTextFieldTemp
      */
     public JTextField getTextFieldTemp(){
         return this.jTextFieldTemp;

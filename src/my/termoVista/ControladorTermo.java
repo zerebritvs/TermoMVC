@@ -17,21 +17,26 @@ import javax.swing.JToggleButton;
 import my.termoModelo.Programa;
 
 /**
- *
+ * Clase Controlador del modelo MVC
  * @author Juan Antonio Pagés
  * @author Fernando San José
  */
 public class ControladorTermo {
+    
     private VistaUI miVista;
     private ModeloTermo miModelo;
     
+    /**
+     * Contructor de ControladorTermo
+     * @param v
+     * @param m 
+     */
     public ControladorTermo(VistaUI v, ModeloTermo m){
         
         miVista = v;
         miModelo = m;
     }
     
-
     private void setPanelEnabled(JPanel panel, Boolean isEnabled) {
         panel.setEnabled(isEnabled);
 
@@ -74,11 +79,9 @@ public class ControladorTermo {
         miVista.getSpinnerMinima().setValue(0);
         miVista.getSpinnerMaxima().setValue(0);
         
-        
     }
     
     /**
-     * 
      * Cambia entre los modos Automático, Manual y Editar
      * @param modo 
      */
@@ -124,7 +127,6 @@ public class ControladorTermo {
                 miVista.getLabelMinima().setVisible(false);
                 
                 miVista.getLabelIcono().setIcon(new ImageIcon(getClass().getResource("/my/termoVista/Manual.png")));
-        
                 
                 break;
                 
@@ -149,15 +151,12 @@ public class ControladorTermo {
                 miVista.getLabelIcono().setIcon(new ImageIcon(getClass().getResource("/my/termoVista/Vacio.png")));
                 
                 break;
-            
-            
         }
-        
-        
+     
     }
     
     /**
-     * Alterna entre On/Off el sistema habilitando/deshabilitando los componentes
+     * Alterna entre On/Off el sistema habilitando/deshabilitando los componentes correspondientes
      */
     public void powerButtonSwitch(){
         
@@ -170,7 +169,6 @@ public class ControladorTermo {
             setPanelEnabled(miVista.getPanelSelectHoras(), false);
             miVista.getLabelIcono().setVisible(true);
             miVista.getToggleButtonOn().setText("OFF");
-            
             
         }else{
             
@@ -188,16 +186,17 @@ public class ControladorTermo {
     }
     
     /**
-     * 
+     * Alterna activando/desactivando la calefacción en el modo Manual
      */
-    public void setIniciar(){
+    public void setIniciarManual(){
          
         if(!miVista.getTextFieldTemp().getForeground().equals(Color.red)){
                 miVista.getTextFieldTemp().setForeground(Color.red);
+                miVista.getButtonIniciar().setText("Finalizar");
         }else{
             miVista.getTextFieldTemp().setForeground(Color.black);
+            miVista.getButtonIniciar().setText("Iniciar");
         }
-        
         
     }
     
@@ -216,9 +215,6 @@ public class ControladorTermo {
                 miVista.getSpinnerMaxima().setValue(temp.getProgramTemps().get(i));
             }
         }
-        
-        //miVista.getSpinnerMinima().setValue(temp.getMin());
-        //miVista.getSpinnerMaxima().setValue(temp.getMax());
         
         Component[]comps = miVista.getPanelSelectHoras().getComponents();
         JToggleButton []botones = new JToggleButton [6];
@@ -241,7 +237,7 @@ public class ControladorTermo {
     }
     
     /**
-     * Almacena la información de los botones de los programas
+     * Almacena la información de los botones de los diferentes programas
      * @param button 
      */
     public void editPrograms(int button){
@@ -254,7 +250,6 @@ public class ControladorTermo {
                 
                 boolean select = miModelo.getPrograma().get(0).getProgramButtons().get(button);
                 miModelo.getPrograma().get(0).getProgramButtons().set(button, !select);
-                
                 
                 break;
             
@@ -270,18 +265,13 @@ public class ControladorTermo {
                 boolean select3 = miModelo.getPrograma().get(2).getProgramButtons().get(button);
                 miModelo.getPrograma().get(2).getProgramButtons().set(button, !select3);
                 
-                
-                break;
-            
+                break;  
         }
         
     }
     
-    
-    
-    
     /**
-     * Almacena las temperaturas máximas y mínimas de los diferentes programas
+     * Almacena las temperaturas máximas y mínimas de los diferentes programas en Programa
      */
     public void editTemperatura(int temp){
         
@@ -296,7 +286,6 @@ public class ControladorTermo {
                 }else{
                     miModelo.getPrograma().get(0).getProgramTemps().set(temp, (Integer)miVista.getSpinnerMaxima().getValue());
                 }
-                
                 
                 break;
             
@@ -319,7 +308,6 @@ public class ControladorTermo {
                 }
                             
                 break;
-            
         }   
         
     }
@@ -334,22 +322,22 @@ public class ControladorTermo {
         int minutes = localDate.getMinute();
         
         if(hours < 10 && minutes < 10){
-            miVista.getTextFieldHora().setText("0"+hours+":0"+minutes);
+            miVista.getTextFieldHora().setText("0" + hours + ":0" + minutes);
         }
         else if(hours < 10 && minutes >= 10){
-            miVista.getTextFieldHora().setText("0"+hours+":"+minutes);
+            miVista.getTextFieldHora().setText("0" + hours + ":" + minutes);
         }
         else if(hours >= 10 && minutes < 10){
-            miVista.getTextFieldHora().setText(hours+":0"+minutes);
+            miVista.getTextFieldHora().setText(hours + ":0" + minutes);
         }
         else{
-            miVista.getTextFieldHora().setText(hours+":"+minutes);
+            miVista.getTextFieldHora().setText(hours + ":" + minutes);
         }
         
     }
     
     /**
-     * Establece el día de la semana del sistema
+     * Establece el día de la semana en el sistema
      */
     public void setDayOfWeek(){
         

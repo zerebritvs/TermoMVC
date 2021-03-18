@@ -7,9 +7,8 @@ package my.termoModelo;
 
 import java.util.ArrayList;
 
-
 /**
- *
+ * Clase Modelo del patrón de diseño MVC
  * @author Juan Antonio Pagés
  * @author Fernando San José
  */
@@ -17,8 +16,7 @@ public class ModeloTermo {
     
     private boolean power;
     private int modo;
-    ArrayList<Programa> programas;
-    
+    private ArrayList<Programa> programas;
     
     /**
      * Constructor de ModeloTermo
@@ -28,14 +26,11 @@ public class ModeloTermo {
         power = false;
         modo = 0;
         programas = new ArrayList<>(3);
-      
         
         for(int i=0; i<3;i++){
             
-            programas.add(new Programa());
-            
+            programas.add(new Programa());   
         }
-       
     }
     
     /**
@@ -54,8 +49,8 @@ public class ModeloTermo {
         return this.power;
     }
     
-   /**
-     * Alterna entre modos
+    /**
+     * Alterna entre modos de funcionamiento del sistema
      * @param modo
      */
     public void setModo(int modo){
@@ -63,7 +58,7 @@ public class ModeloTermo {
     }
     
     /**
-     * Obtiene el modo del sistema
+     * Obtiene el modo de funcionamiento del sistema
      * @return modo
      */
     public int getModo(){
@@ -81,10 +76,10 @@ public class ModeloTermo {
     
     /**
      * Almacena los programas
-     * @param p
+     * @param programas
      */
-    public void setPrograma(ArrayList<Programa> p){
-        this.programas= p;
+    public void setPrograma(ArrayList<Programa> programas){
+        this.programas = programas;
     }
     
 }

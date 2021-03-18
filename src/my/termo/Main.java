@@ -8,12 +8,12 @@ package my.termo;
 import my.termoVista.VistaUI;
 
 /**
- *Clase Main
- * 
+ * Clase Main
  * @author Juan Antonio Pagés
  * @author Fernando San José
  */
 public class Main {
+    
      /**
      * @param args the command line arguments
      */
